@@ -116,6 +116,9 @@ export default {
     },
     deleteProduct: function(product) {
       console.log("Delete product...", product.name);
+      axios.delete("/api/products/" + product.id).then(response => {
+        console.log("Success!");
+      });
     }
   }
 };
