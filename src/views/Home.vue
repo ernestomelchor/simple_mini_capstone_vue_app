@@ -32,6 +32,29 @@
       <div v-if="!currentProduct">
         <p>Price: {{ product.price }}</p>
         <p>Description: {{ product.description }}</p>
+        <div>
+          <h4>Update Product</h4>
+          <div>
+            <div>
+              Name:
+              <input type="text" v-model="product.name" />
+            </div>
+            <div></div>
+            <div>
+              Description:
+              <input type="text" v-model="product.description" />
+            </div>
+            <div>
+              Price:
+              <input type="text" v-model="product.price" />
+            </div>
+            <div>
+              Image URL:
+              <input type="text" v-model="product.image_url" />
+            </div>
+          </div>
+          <button v-on:click="updateProduct(product)">Update</button>
+        </div>
       </div>
     </div>
   </div>
@@ -74,6 +97,17 @@ export default {
       axios.post("/api/products", params).then(response => {
         console.log("Success!", response.data);
         this.products.push(response.data);
+      });
+    },
+    updateProduct: function(product) {
+      var params = {
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        image_url: product.image_url
+      };
+      axios.patch("/api/products/" + product.id, params).then(response => {
+        console.log("Success!", response.data);
       });
     }
   }
