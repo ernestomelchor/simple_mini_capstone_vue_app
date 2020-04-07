@@ -55,6 +55,10 @@
           </div>
           <button v-on:click="updateProduct(product)">Update</button>
         </div>
+        <br />
+        <div>
+          <button v-on:click="deleteProduct(product)">Delete This Product</button>
+        </div>
       </div>
     </div>
   </div>
@@ -109,6 +113,9 @@ export default {
       axios.patch("/api/products/" + product.id, params).then(response => {
         console.log("Success!", response.data);
       });
+    },
+    deleteProduct: function(product) {
+      console.log("Delete product...", product.name);
     }
   }
 };
