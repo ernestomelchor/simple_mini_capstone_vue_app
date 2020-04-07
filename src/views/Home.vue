@@ -26,7 +26,10 @@
     <div v-for="product in products">
       <h2>{{ product.name }}</h2>
       <img v-bind:src="product.image_url" alt />
-      <div v-if="false">
+      <div>
+        <button v-on:click="currentProduct = !currentProduct">Show more info</button>
+      </div>
+      <div v-if="!currentProduct">
         <p>Price: {{ product.price }}</p>
         <p>Description: {{ product.description }}</p>
       </div>
@@ -48,6 +51,7 @@ export default {
     return {
       message: "You just lost the game!",
       products: [],
+      currentProduct: {},
       newProductName: "",
       newProductDescription: "",
       newProductPrice: "",
