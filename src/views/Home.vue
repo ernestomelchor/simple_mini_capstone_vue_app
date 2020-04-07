@@ -118,6 +118,8 @@ export default {
       console.log("Delete product...", product.name);
       axios.delete("/api/products/" + product.id).then(response => {
         console.log("Success!");
+        var index = this.products.indexOf(product);
+        this.products.splice(index, 1);
       });
     }
   }
