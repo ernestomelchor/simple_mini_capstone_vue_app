@@ -2,6 +2,25 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <h2>Create New Product</h2>
+    <div>
+      <div>
+        Name:
+        <input type="text" v-model="newProductName" />
+      </div>
+      <div></div>
+      <div>
+        Description:
+        <input type="text" v-model="newProductDescription" />
+      </div>
+      <div>
+        Price:
+        <input type="text" v-model="newProductPrice" />
+      </div>
+      <div>
+        Image URL:
+        <input type="text" v-model="newProductImageUrl" />
+      </div>
+    </div>
     <button v-on:click="createProduct()">Create</button>
 
     <div v-for="product in products">
@@ -25,8 +44,12 @@ var axios = require("axios");
 export default {
   data: function() {
     return {
-      message: "Random Stuff that Peter Owns that He Wants to Sell to You!",
-      products: []
+      message: "You just lost the game!",
+      products: [],
+      newProductName: "",
+      newProductDescription: "",
+      newProductPrice: "",
+      newProductImageUrl: ""
     };
   },
   created: function() {
@@ -37,11 +60,10 @@ export default {
   methods: {
     createProduct: function() {
       var params = {
-        name: "Hockey Puck",
-        description: "Best hockey puck I could find.",
-        price: 100,
-        image_url:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSVcoKk3tccQHe1az-ZiMQ8eqOu00GbNMSD-I1YHsquS2y7-oroPvF36Ws7vpUbxL-OABJt6VGQ&usqp=CAc"
+        name: this.newProductName,
+        description: this.newProductDescription,
+        price: this.newProductPrice,
+        image_url: this.newProductImageUrl
       };
       axios.post("/api/products", params).then(response => {
         console.log("Success!", response.data);
