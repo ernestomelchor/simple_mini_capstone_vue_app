@@ -27,9 +27,9 @@
       <h2>{{ product.name }}</h2>
       <img v-bind:src="product.image_url" alt />
       <div>
-        <button v-on:click="currentProduct = !currentProduct">Show more info</button>
+        <button v-on:click="currentProduct = product">Show more info</button>
       </div>
-      <div v-if="!currentProduct">
+      <div v-if="product === currentProduct">
         <p>Price: {{ product.price }}</p>
         <p>Description: {{ product.description }}</p>
         <div>
