@@ -26,8 +26,10 @@
     <div v-for="product in products">
       <h2>{{ product.name }}</h2>
       <img v-bind:src="product.image_url" alt />
-      <p>Price: {{ product.price }}</p>
-      <p>Description: {{ product.description }}</p>
+      <div v-if="false">
+        <p>Price: {{ product.price }}</p>
+        <p>Description: {{ product.description }}</p>
+      </div>
     </div>
   </div>
 </template>
