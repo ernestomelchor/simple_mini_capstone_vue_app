@@ -27,7 +27,7 @@
       <h2>{{ product.name }}</h2>
       <img v-bind:src="product.image_url" alt />
       <div>
-        <button v-on:click="currentProduct = product">Show more info</button>
+        <button v-on:click="showProduct(product)">Show more info</button>
       </div>
       <div v-if="product === currentProduct">
         <p>Price: {{ product.price }}</p>
@@ -102,6 +102,13 @@ export default {
         console.log("Success!", response.data);
         this.products.push(response.data);
       });
+    },
+    showProduct: function(product) {
+      if (this.currentProduct === product) {
+        this.currentProduct = {};
+      } else {
+        this.currentProduct = product;
+      }
     },
     updateProduct: function(product) {
       var params = {
