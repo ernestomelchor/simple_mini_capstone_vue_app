@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
+    <ul>
+      <li v-for="error in errors">{{ error }}</li>
+    </ul>
     <h2>Create New Product</h2>
     <div>
       <div>
@@ -76,7 +79,8 @@ var axios = require("axios");
 export default {
   data: function() {
     return {
-      message: "You just lost the game!",
+      message: "Welcome to Vue.js!",
+      errors: [],
       products: [],
       currentProduct: {},
       newProductName: "",
@@ -98,10 +102,16 @@ export default {
         price: this.newProductPrice,
         image_url: this.newProductImageUrl
       };
-      axios.post("/api/products", params).then(response => {
-        console.log("Success!", response.data);
-        this.products.push(response.data);
-      });
+      axios
+        .post("/api/products", params)
+        .then(response => {
+          console.log("Success!", response.data);
+          this.products.push(response.data);
+        })
+        .catch(error => {
+          console.log(error.response.data.errors);
+          this.errors = error.response.data.errors;
+        });
     },
     showProduct: function(product) {
       if (this.currentProduct === product) {
