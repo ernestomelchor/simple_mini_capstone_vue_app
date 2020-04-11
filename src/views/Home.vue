@@ -71,6 +71,10 @@
 img {
   width: 300px;
 }
+
+li {
+  color: red;
+}
 </style>
 
 <script>
@@ -107,6 +111,10 @@ export default {
         .then(response => {
           console.log("Success!", response.data);
           this.products.push(response.data);
+          this.newProductName = "";
+          this.newProductDescription = "";
+          this.newProductPrice = "";
+          this.newProductImageUrl = "";
         })
         .catch(error => {
           console.log(error.response.data.errors);
