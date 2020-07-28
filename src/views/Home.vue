@@ -2,7 +2,13 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <ul>
-      <li class="errors" v-for="error in errors">{{ error }}</li>
+      <li
+        class="errors alert alert-danger"
+        role="alert"
+        v-for="error in errors"
+      >
+        {{ error }}
+      </li>
     </ul>
     <h2>Create New Product</h2>
     <div>
@@ -10,7 +16,6 @@
         Name:
         <input type="text" v-model="newProductName" />
       </div>
-      <div></div>
       <div>
         Description:
         <input type="text" v-model="newProductDescription" />

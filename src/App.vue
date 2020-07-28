@@ -33,6 +33,7 @@
 li.errors {
   color: red;
   list-style: none;
+  margin-right: 1.5rem;
 }
 
 img {
