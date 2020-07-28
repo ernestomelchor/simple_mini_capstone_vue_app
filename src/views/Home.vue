@@ -60,21 +60,23 @@
         </div>
         <br />
         <div>
-          <button v-on:click="deleteProduct(product)">Delete This Product</button>
+          <button v-on:click="deleteProduct(product)">
+            Delete This Product
+          </button>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
 var axios = require("axios");
+var bootstrap = require("bootstrap");
 
 export default {
-  data: function () {
+  data: function() {
     return {
       message: "Welcome to Vue.js!",
       errors: [],
@@ -86,13 +88,13 @@ export default {
       newProductImageUrl: "",
     };
   },
-  created: function () {
+  created: function() {
     axios.get("/api/products").then((response) => {
       this.products = response.data;
     });
   },
   methods: {
-    createProduct: function () {
+    createProduct: function() {
       var params = {
         name: this.newProductName,
         description: this.newProductDescription,
@@ -114,14 +116,14 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    showProduct: function (product) {
+    showProduct: function(product) {
       if (this.currentProduct === product) {
         this.currentProduct = {};
       } else {
         this.currentProduct = product;
       }
     },
-    updateProduct: function (product) {
+    updateProduct: function(product) {
       var params = {
         name: product.name,
         description: product.description,
@@ -132,7 +134,7 @@ export default {
         console.log("Success!", response.data);
       });
     },
-    deleteProduct: function (product) {
+    deleteProduct: function(product) {
       console.log("Delete product...", product.name);
       axios.delete("/api/products/" + product.id).then((response) => {
         console.log("Success!");
