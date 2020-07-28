@@ -2,7 +2,7 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <ul>
-      <li v-for="error in errors">{{ error }}</li>
+      <li class="errors" v-for="error in errors">{{ error }}</li>
     </ul>
     <h2>Create New Product</h2>
     <div>
@@ -68,20 +68,13 @@
 </template>
 
 <style>
-img {
-  width: 300px;
-}
-
-li {
-  color: red;
-}
 </style>
 
 <script>
 var axios = require("axios");
 
 export default {
-  data: function() {
+  data: function () {
     return {
       message: "Welcome to Vue.js!",
       errors: [],
@@ -90,25 +83,25 @@ export default {
       newProductName: "",
       newProductDescription: "",
       newProductPrice: "",
-      newProductImageUrl: ""
+      newProductImageUrl: "",
     };
   },
-  created: function() {
-    axios.get("/api/products").then(response => {
+  created: function () {
+    axios.get("/api/products").then((response) => {
       this.products = response.data;
     });
   },
   methods: {
-    createProduct: function() {
+    createProduct: function () {
       var params = {
         name: this.newProductName,
         description: this.newProductDescription,
         price: this.newProductPrice,
-        image_url: this.newProductImageUrl
+        image_url: this.newProductImageUrl,
       };
       axios
         .post("/api/products", params)
-        .then(response => {
+        .then((response) => {
           console.log("Success!", response.data);
           this.products.push(response.data);
           this.newProductName = "";
@@ -116,37 +109,37 @@ export default {
           this.newProductPrice = "";
           this.newProductImageUrl = "";
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error.response.data.errors);
           this.errors = error.response.data.errors;
         });
     },
-    showProduct: function(product) {
+    showProduct: function (product) {
       if (this.currentProduct === product) {
         this.currentProduct = {};
       } else {
         this.currentProduct = product;
       }
     },
-    updateProduct: function(product) {
+    updateProduct: function (product) {
       var params = {
         name: product.name,
         description: product.description,
         price: product.price,
-        image_url: product.image_url
+        image_url: product.image_url,
       };
-      axios.patch("/api/products/" + product.id, params).then(response => {
+      axios.patch("/api/products/" + product.id, params).then((response) => {
         console.log("Success!", response.data);
       });
     },
-    deleteProduct: function(product) {
+    deleteProduct: function (product) {
       console.log("Delete product...", product.name);
-      axios.delete("/api/products/" + product.id).then(response => {
+      axios.delete("/api/products/" + product.id).then((response) => {
         console.log("Success!");
         var index = this.products.indexOf(product);
         this.products.splice(index, 1);
       });
-    }
-  }
+    },
+  },
 };
 </script>
