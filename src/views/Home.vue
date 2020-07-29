@@ -29,13 +29,17 @@
         <input type="text" v-model="newProductImageUrl" />
       </div>
     </div>
-    <button v-on:click="createProduct()">Create</button>
+    <button class="btn btn-primary" type="submit" v-on:click="createProduct()">
+      Create
+    </button>
 
     <div v-for="product in products">
       <h2>{{ product.name }}</h2>
       <img v-bind:src="product.image_url" alt />
       <div>
-        <button v-on:click="showProduct(product)">Show more info</button>
+        <button class="btn btn-info" v-on:click="showProduct(product)">
+          Show more info
+        </button>
       </div>
       <div v-if="product === currentProduct">
         <p>Price: {{ product.price }}</p>
@@ -61,11 +65,21 @@
               <input type="text" v-model="product.image_url" />
             </div>
           </div>
-          <button v-on:click="updateProduct(product)">Update</button>
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            v-on:click="updateProduct(product)"
+          >
+            Update
+          </button>
         </div>
         <br />
         <div>
-          <button v-on:click="deleteProduct(product)">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            v-on:click="deleteProduct(product)"
+          >
             Delete This Product
           </button>
         </div>
@@ -83,7 +97,7 @@ var bootstrap = require("bootstrap");
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!",
+      message: "Buy Me a Coffee!",
       errors: [],
       products: [],
       currentProduct: {},
