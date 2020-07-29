@@ -2,7 +2,13 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <ul>
-      <li class="errors" v-for="error in errors">{{ error }}</li>
+      <li
+        class="errors alert alert-danger"
+        role="alert"
+        v-for="error in errors"
+      >
+        {{ error }}
+      </li>
     </ul>
     <h2>Create New Product</h2>
     <div>
@@ -10,7 +16,6 @@
         Name:
         <input type="text" v-model="newProductName" />
       </div>
-      <div></div>
       <div>
         Description:
         <input type="text" v-model="newProductDescription" />
@@ -24,13 +29,17 @@
         <input type="text" v-model="newProductImageUrl" />
       </div>
     </div>
-    <button v-on:click="createProduct()">Create</button>
+    <button class="btn btn-primary" type="submit" v-on:click="createProduct()">
+      Create
+    </button>
 
     <div v-for="product in products">
       <h2>{{ product.name }}</h2>
       <img v-bind:src="product.image_url" alt />
       <div>
-        <button v-on:click="showProduct(product)">Show more info</button>
+        <button class="btn btn-info" v-on:click="showProduct(product)">
+          Show more info
+        </button>
       </div>
       <div v-if="product === currentProduct">
         <p>Price: {{ product.price }}</p>
@@ -56,27 +65,39 @@
               <input type="text" v-model="product.image_url" />
             </div>
           </div>
-          <button v-on:click="updateProduct(product)">Update</button>
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            v-on:click="updateProduct(product)"
+          >
+            Update
+          </button>
         </div>
         <br />
         <div>
-          <button v-on:click="deleteProduct(product)">Delete This Product</button>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            v-on:click="deleteProduct(product)"
+          >
+            Delete This Product
+          </button>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
 var axios = require("axios");
+var bootstrap = require("bootstrap");
 
 export default {
-  data: function () {
+  data: function() {
     return {
-      message: "Welcome to Vue.js!",
+      message: "Buy Me a Coffee!",
       errors: [],
       products: [],
       currentProduct: {},
@@ -86,13 +107,13 @@ export default {
       newProductImageUrl: "",
     };
   },
-  created: function () {
+  created: function() {
     axios.get("/api/products").then((response) => {
       this.products = response.data;
     });
   },
   methods: {
-    createProduct: function () {
+    createProduct: function() {
       var params = {
         name: this.newProductName,
         description: this.newProductDescription,
@@ -114,14 +135,14 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    showProduct: function (product) {
+    showProduct: function(product) {
       if (this.currentProduct === product) {
         this.currentProduct = {};
       } else {
         this.currentProduct = product;
       }
     },
-    updateProduct: function (product) {
+    updateProduct: function(product) {
       var params = {
         name: product.name,
         description: product.description,
@@ -132,7 +153,7 @@ export default {
         console.log("Success!", response.data);
       });
     },
-    deleteProduct: function (product) {
+    deleteProduct: function(product) {
       console.log("Delete product...", product.name);
       axios.delete("/api/products/" + product.id).then((response) => {
         console.log("Success!");

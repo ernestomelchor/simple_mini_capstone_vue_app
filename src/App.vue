@@ -1,9 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>
+    <nav class="nav nav-pills flex-column flex-sm-row">
+      <a
+        class="flex-sm-fill text-sm-center nav-link active-class"
+        aria-current="page"
+        href="/"
+        >Home</a
+      >
+      <a
+        class="flex-sm-fill text-sm-center nav-link"
+        aria-current="page"
+        href="/about"
+        >About</a
+      >
+    </nav>
     <router-view />
   </div>
 </template>
@@ -14,28 +24,84 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #3b6978;
+  background-color: #e4e3e3;
+}
+a.nav-link {
+  background-color: #3b6978;
+  color: #e4e3e3;
 }
 
-#nav {
-  padding: 30px;
+a.nav-link:hover {
+  background-color: #84a9ac;
+  color: #e4e3e3;
+}
+a.nav-link:active {
+  background-color: #204051;
+  color: #e4e3e3;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.btn-info {
+  background-color: #204051;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.btn-info:hover {
+  background-color: #3b6978;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
+}
+
+.btn-info:focus {
+  background-color: #84a9ac;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
+}
+
+.btn-primary {
+  background-color: #84a9ac;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
+}
+
+.btn-primary:hover {
+  background-color: #204051;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
+}
+
+.btn-primary:focus {
+  background-color: #3b6978;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
+}
+
+.btn-sm {
+  background-color: #204051;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
+}
+
+.btn-sm:hover {
+  background-color: #3b6978;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
+}
+
+.btn-sm:focus {
+  background-color: #84a9ac;
+  color: #e4e3e3;
+  border-color: #e4e3e3;
 }
 
 li.errors {
   color: red;
   list-style: none;
+  margin-right: 2rem;
 }
 
 img {
-  width: 300px;
+  width: 25vw;
 }
 </style>
