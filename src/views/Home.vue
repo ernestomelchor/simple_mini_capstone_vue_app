@@ -9,26 +9,26 @@
         v-bind:key="error.id"
       >{{ error }}</li>
     </ul>
-    <h2 class="mb-3">Create a New Snack</h2>
     <div class="mb-3">
+      <h2 class="mb-3">Create a New Snack</h2>
       <div class="mb-3">
-        Name:
+        <div>Name:</div>
         <input type="text" v-model="newProductName" />
       </div>
       <div class="mb-3">
-        Description:
+        <div>Description:</div>
         <input type="text" v-model="newProductDescription" />
       </div>
       <div class="mb-3">
-        Price:
+        <div>Price:</div>
         <input type="text" v-model="newProductPrice" />
       </div>
       <div class="mb-3">
-        Image URL:
+        <div>Image URL:</div>
         <input type="text" v-model="newProductImageUrl" />
       </div>
+      <button class="btn btn-primary mb-5" type="submit" v-on:click="createProduct()">Create</button>
     </div>
-    <button class="btn btn-primary mb-5" type="submit" v-on:click="createProduct()">Create</button>
 
     <div class="mb-5" v-for="product in products" v-bind:key="product.id">
       <h2 class="mb-3">{{ product.name }}</h2>
