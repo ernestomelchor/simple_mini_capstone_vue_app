@@ -1,18 +1,8 @@
 <template>
   <div id="app">
-    <nav class="nav nav-pills flex-column flex-sm-row">
-      <a
-        class="flex-sm-fill text-sm-center nav-link active-class"
-        aria-current="page"
-        href="/"
-        >Home</a
-      >
-      <a
-        class="flex-sm-fill text-sm-center nav-link"
-        aria-current="page"
-        href="/about"
-        >About</a
-      >
+    <nav class="nav nav-pills flex-column flex-sm-row mb-4">
+      <a class="flex-sm-fill text-sm-center nav-link active-class" aria-current="page" href="/">Home</a>
+      <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="/about">About</a>
     </nav>
     <router-view />
   </div>
@@ -20,6 +10,9 @@
 
 <style>
 #app {
+  margin-top: 0 auto;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -102,6 +95,6 @@ li.errors {
 }
 
 img {
-  width: 25vw;
+  width: 20em;
 }
 </style>
