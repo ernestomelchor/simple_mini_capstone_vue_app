@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="mb-5">{{ message }}</h1>
+    <h1 class="snackshack mb-5">{{ message }}</h1>
     <ul>
       <li
         class="errors alert alert-danger"
@@ -9,7 +9,7 @@
         v-bind:key="error.id"
       >{{ error }}</li>
     </ul>
-    <h2 class="mb-3">Create New Product</h2>
+    <h2 class="mb-3">Create a New Snack</h2>
     <div class="mb-3">
       <div class="mb-3">
         Name:
@@ -40,7 +40,7 @@
         <p>Price: {{ product.price }}</p>
         <p>Description: {{ product.description }}</p>
         <div>
-          <h4>Update Product</h4>
+          <h4>Update Snack</h4>
           <div>
             <div>
               Name:
@@ -72,7 +72,7 @@
             class="btn btn-primary"
             type="submit"
             v-on:click="deleteProduct(product)"
-          >Delete This Product</button>
+          >Delete This Snack</button>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@ var bootstrap = require("bootstrap");
 export default {
   data: function () {
     return {
-      message: "Buy Me a Coffee!",
+      message: "SnackShack",
       errors: [],
       products: [],
       currentProduct: {},

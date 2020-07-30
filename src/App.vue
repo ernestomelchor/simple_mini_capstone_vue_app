@@ -4,15 +4,20 @@
       <a class="flex-sm-fill text-sm-center nav-link active-class" aria-current="page" href="/">Home</a>
       <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="/about">About</a>
     </nav>
-    <router-view />
+    <main>
+      <router-view />
+    </main>
+    <footer>this is a footer</footer>
   </div>
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@900&display=swap");
+html {
+  height: 100%;
+  width: 100%;
+}
 #app {
-  margin-top: 0 auto;
-  margin-left: 0 auto;
-  margin-right: 0 auto;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -86,6 +91,10 @@ a.nav-link:active {
   background-color: #84a9ac;
   color: #e4e3e3;
   border-color: #e4e3e3;
+}
+
+h1.snackshack {
+  font-family: "Alegreya Sans", sans-serif;
 }
 
 li.errors {

@@ -1,5 +1,5 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Welcome to SnackShack, a site where you can see some of my favorite snacks at the moment.</h1>
   </div>
 </template>
